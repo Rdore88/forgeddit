@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: Russell Westbrook is the best
+  link: http://www.espn.com/nba/story/_/id/18981152/russell-westbrook-oklahoma-city-thunder-first-triple-double-perfect-field-free-throw-line
+  pic_url: MyString
+
+two:
+  title: MyString
+  link: MyString
+  pic_url: MyString
