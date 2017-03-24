@@ -1,8 +1,10 @@
 <ul>
   <% @submissions.each do |sub| %>
   <li>
+    <img src="<%= sub.pic_url %>" >
     <%= link_to sub.title, sub.link %>
-    <%= sub.comments.order(created_at: :desc).first["comment"] %>
+    <% comment = sub.comments&.last%>
+    <%= comment&.comment %>
     <%= link_to "Delete", "/submissions/#{sub.id}", method: 'delete' %>
     <%= link_to "Comments", comments_url(submission_id: "#{sub.id}")  %>
   </li>
