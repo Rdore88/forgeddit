@@ -1,5 +1,10 @@
 <ul>
   <% @submissions.each do |sub| %>
-  <li><a href="#{sub.link}">sub.title</a></li>
+  <li>
+    <%= link_to sub.title, sub.link %>
+    <%= sub.comments.order(created_at: :desc).first["comment"] %>
+    <%= link_to "Delete", "/submissions/#{sub.id}", method: 'delete' %>
+    <%= link_to "Comments", comments_url(submission_id: "#{sub.id}")  %>
+  </li>
   <% end %>
 </ul>

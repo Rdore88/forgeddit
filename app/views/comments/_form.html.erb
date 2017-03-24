@@ -1,0 +1,13 @@
+<%= form_for @comment do |f| %>
+
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+
+  <%= f.label :comment %>
+  <%= f.text_area :comment %>
+
+  <%= f.hidden_field :submission_id %>
+
+  <%= f.submit %>
+
+<% end %>
