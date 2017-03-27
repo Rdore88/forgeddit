@@ -1,5 +1,5 @@
 <h2>Comments for <%= @submission.title %></h2>
-<p><%= link_to "Create Comments", new_comment_url(submission_id: @submission.id)  %></p>
+<p><%= link_to "Create Comment", new_comment_url(submission_id: @submission.id)  %></p>
 <ul>
   <% @comments.each do |comment|  %>
   <li>

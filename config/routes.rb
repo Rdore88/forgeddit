@@ -7,4 +7,12 @@ Rails.application.routes.draw do
 
   resources :comments
 
+  get "/sessions/new", controller: "sessions", action: "new"
+
+  get "/users/new", controller: "users", action: "new"
+  
+  resources :users
+
+  resources :sessions
+
 end

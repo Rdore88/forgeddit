@@ -1,12 +1,19 @@
-<ul>
+<%= link_to "Create Submission", new_submission_url(user_id: @user) %>
+<% if @user %>
+  <%= link_to "Sign Out", "/sessions/#{@user.id}", method: "delete" %>
+<% end %>
+
+<ol>
   <% @submissions.each do |sub| %>
   <li>
     <img src="<%= sub.pic_url %>" >
     <%= link_to sub.title, sub.link %>
-    <% comment = sub.comments&.last%>
-    <%= comment&.comment %>
     <%= link_to "Delete", "/submissions/#{sub.id}", method: 'delete' %>
-    <%= link_to "Comments", comments_url(submission_id: "#{sub.id}")  %>
+    <ul>
+      <% comment = sub.comments&.last%>
+      <li><%= comment&.comment %></li>
+      <li><%= link_to "Comments", comments_url(submission_id: "#{sub.id}")  %></li>
+    </ul>
   </li>
   <% end %>
-</ul>
+</ol>

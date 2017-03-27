@@ -13,9 +13,13 @@ class CommentsController < ApplicationController
   end
 
   def create
-    Comment.create(comment_params)
-    @submission = comment_params["submission_id"]
-    redirect_to comments_url(submission_id: @submission)
+    comment = Comment.new(comment_params)
+    if comment.save
+      @submission = comment_params["submission_id"]
+      redirect_to comments_url(submission_id: @submission)
+    else
+      render "new"
+    end
   end
 
   def destroy
