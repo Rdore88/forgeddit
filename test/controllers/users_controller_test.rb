@@ -12,11 +12,9 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "new user can save" do
-    post "/users", params: { user: { name: "Moose", email: "Moose@gooddogs.com", password: "chewytoy", password_confirmation: "chewytoy" } }
+    post "/users", params: { user: { username: "Moose", email: "Moose@gooddogs.com", password: "chewytoy", password_confirmation: "chewytoy" } }
 
-    # assert_response :redirect why didn't this work?
     assert_response :success
-    #This wouldn't work when I tried to search by name...
     moose = User.find_by(email: "Moose@gooddogs.com")
     assert moose.persisted?
   end
