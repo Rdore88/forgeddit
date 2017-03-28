@@ -1,21 +1,27 @@
 class SessionsController < ApplicationController
 
   def new
-    @session = Session.new
+    if current_user
+      redirect_to submissions_path
+    else
+      render "new"
+    end
   end
 
   def create
-    user = User.all.where(email: session_params["email"]).first
-    Session.create(email: user.email, user_id: user.id)
-    redirect_to submissions_url(user_id: user.id)
+    @user = User.find_by(email: params["email"])
+    if @user && @user.password == params[:password]
+      session[:current_user_id] = @user.id
+      redirect_to submissions_url
+    else
+      session[:error] = "Please make sure you have created a profile"
+      redirect_to new_sessions_path
+    end
   end
 
   def destroy
-    session = Session.where(user_id: params["id"]).first
-    session.user_id = nil
-    session.email = nil
-    redirect_to "/submissions"
-
+    session[:current_user_id] = nil
+    redirect_to submissions_url
   end
 
   private def session_params

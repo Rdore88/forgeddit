@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   get "/sessions/new", controller: "sessions", action: "new"
 
   get "/users/new", controller: "users", action: "new"
-  
+
   resources :users
 
-  resources :sessions
+  resource :sessions
 
 end

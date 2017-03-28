@@ -1,16 +1,18 @@
+<% if session[:error] %>
+  <p><%= session[:error] %></p>
+<% end %>
+
 <%= form_for @submission do |f| %>
+  <%= @submission.errors.full_messages.join("") %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
 
-<%= f.label :title %>
-<%= f.text_field :title %>
+  <%= f.label :link %>
+  <%= f.text_field :link %>
 
-<%= f.label :link %>
-<%= f.text_field :link %>
+  <%= f.label :pic_url %>
+  <%= f.text_field :pic_url %>
 
-<%= f.label :pic_url %>
-<%= f.text_field :pic_url %>
-
-<%= f.hidden_field :user_id %>
-
-<%= f.submit %>
+  <%= f.submit %>
 
 <% end %>

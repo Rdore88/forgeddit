@@ -1,8 +1,11 @@
-<%= form_for @session do |f| %>
+<%= form_tag sessions_path do |f| %>
 
-<%= f.label :email %>
-<%= f.text_field :email %>
+<%= label_tag :email %>
+<%= email_field_tag :email %>
 
-<%= f.submit %>
+<%= label_tag :password %>
+<%= password_field_tag :password %>
+
+<%= submit_tag "Sign In" %>
 
 <% end %>

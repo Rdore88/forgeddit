@@ -1,25 +1,26 @@
 class SubmissionsController < ApplicationController
 
   def index
-    if params["user_id"]
-        @user = User.find(params["user_id"])
+    if current_user
+        @user = current_user
     end
     @submissions = Submission.all
   end
 
   def new
-    user_id = params["user_id"]
-    @user = User.find(user_id)
+    @user = current_user
     @submission = @user.submissions.new
   end
 
   def create
     @submission = Submission.new(submission_params)
-    if @submission.save
-      redirect_to submissions_url(user_id: params["submission"]["user_id"])
-    else
-      render "new"
-    end
+    @submission.user = current_user
+      if @submission.save
+        redirect_to submissions_url
+      else
+        session[:error] = "Submission Not Posted"
+        render "new"
+      end
   end
 
   def destroy

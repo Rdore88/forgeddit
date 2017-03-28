@@ -1,10 +1,15 @@
 <h2>Comments for <%= @submission.title %></h2>
-<p><%= link_to "Create Comment", new_comment_url(submission_id: @submission.id)  %></p>
+  <% if current_user %>
+    <p><%= link_to "Create Comment", new_comment_url(submission_id: @submission.id)  %></p>
+  <% end %>
 <ul>
   <% @comments.each do |comment|  %>
   <li>
-    <%= comment.comment %>
-    <%= link_to "Delete", "/comments/#{comment.id}", method: 'delete' %>
+    <ul>
+      <li><%= comment.user.username %></li>
+      <li><%= comment.comment %></li>
+      <li><%= link_to "Delete", "/comments/#{comment.id}", method: 'delete' %></li>
+    </ul>
   </li>
 
   <% end %>
