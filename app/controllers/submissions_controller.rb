@@ -1,15 +1,11 @@
 class SubmissionsController < ApplicationController
 
   def index
-    if current_user
-        @user = current_user
-    end
     @submissions = Submission.all
   end
 
   def new
-    @user = current_user
-    @submission = @user.submissions.new
+    @submission = current_user.submissions.new
   end
 
   def create
@@ -18,7 +14,7 @@ class SubmissionsController < ApplicationController
       if @submission.save
         redirect_to submissions_url
       else
-        session[:error] = "Submission Not Posted"
+        flash[:error] = "Submission Not Posted"
         render "new"
       end
   end

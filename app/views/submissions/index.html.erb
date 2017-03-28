@@ -1,22 +1,23 @@
 
-<% if @user %>
+<% if current_user %>
   <%= link_to "Create Submission", new_submission_url %>
-  <%= link_to "Sign Out", "/sessions", method: "delete" %>
-  <p>Hello <%= @user.username %></p>
 <% end %>
 
 <ol>
   <% @submissions.each do |sub| %>
   <li>
-    <img src="<%= sub.pic_url %>" >
-    <%= link_to sub.title, sub.link %>
-      <%= link_to "Delete", "/submissions/#{sub.id}", method: 'delete' %>
+    <img class="submission_pic" src="<%= sub.pic_url %>" >
+      <%= link_to sub.title, sub.link, class: "link_title" %>
+      <% if current_user&.id == sub.user&.id %>
+        <%= link_to "Delete", "/submissions/#{sub.id}", method: 'delete' %>
+      <% end %>
   </li>
-    <ul>
-      <li>submitted by <%= sub.user.username %></li>
+    <ul >
+      <li class="submission_info"> submitted by <%= sub.user.username %></li>
       <% number_of_comments = sub.comments.length%>
-      <li><%= link_to "#{number_of_comments} " "Comments", comments_url(submission_id: "#{sub.id}")  %></li>
+      <li class="submission_info">
+        <%= link_to "#{number_of_comments} " "Comments", comments_url(submission_id: "#{sub.id}")  %>
+      </li>
     </ul>
-  </li>
   <% end %>
 </ol>

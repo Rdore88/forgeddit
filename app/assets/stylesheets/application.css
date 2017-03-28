@@ -2,11 +2,17 @@
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+}
+
 nav {
-  width: 980px;
   margin-left: none;
   margin-right: none;
-  background-color: #CEE3F8
+  background-color: #CEE3F8;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-color: #5F99CF;
 }
 
 nav img {
@@ -21,4 +27,54 @@ ul {
 
 ul a:link {
     text-decoration: none;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: solid 1px gray;
+  margin-bottom: 10px;
+}
+
+
+.link_title {
+  text-decoration: none;
+  font-size: xx-large;
+  font-weight: normal;
+  margin-bottom: 1px;
+}
+
+.submission_pic {
+  width: 8%;
+  padding-top: 10px;
+}
+
+.tab {
+  background-color: white;
+  text-decoration: none;
+  color: #336699;
+}
+
+.global-links {
+  position: absolute;
+  right: 9px;
+  background-color: #EFF7FF;
+  top: 0px;
+  margin-top: 56px;
+  text-decoration: none;
+}
+
+.comment_user {
+  padding-top: 10px;
+  font-size: 12px;
+}
+
+.comment {
+  color: #4f4f4f;
+  word-wrap: break-word;
+}
+
+.submission_info {
+  padding-top: -20px;
+  margin-left: 57px;
 }

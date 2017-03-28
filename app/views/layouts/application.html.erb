@@ -8,9 +8,17 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <nav>
       <a href="/submissions"><img src="https://upload.wikimedia.org/wikipedia/en/8/82/Reddit_logo_and_wordmark.svg"></a>
-      <%= link_to "Submissions", "/submissions" %>
-      <%= link_to "Create User", "/users/new" %>
-      <%= link_to "Sign In", "/sessions/new" %>
+      <%= link_to "Submissions", "/submissions", class: "tab" %>
+      <aside class="global-links">
+        <% if current_user %>
+          <%= current_user&.username %> |
+          <%= link_to "logout", "/sessions", method: "delete" %>
+        <% else %>
+          <%= link_to "Create User", "/users/new" %> |
+          <%= link_to "Sign In", "/sessions/new" %>
+        <% end %>
+      </aside>
+
     </nav>
   </head>
 

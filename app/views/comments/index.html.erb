@@ -6,11 +6,13 @@
   <% @comments.each do |comment|  %>
   <li>
     <ul>
-      <li><%= comment.user.username %></li>
-      <li><%= comment.comment %></li>
-      <li><%= link_to "Delete", "/comments/#{comment.id}", method: 'delete' %></li>
+      <% comment_user = comment.user %>
+      <li class="comment_user"><%= comment_user.username %></li>
+      <li class="comment"> <%= comment.comment %></li>
+      <% if current_user&.id == comment_user&.id %>
+        <li><%= link_to "Delete", "/comments/#{comment.id}", method: 'delete' %></li>
+      <% end %>
     </ul>
   </li>
-
   <% end %>
 </ul>
