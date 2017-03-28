@@ -10,8 +10,10 @@
   <li>
     <img src="<%= sub.pic_url %>" >
     <%= link_to sub.title, sub.link %>
-    <%= link_to "Delete", "/submissions/#{sub.id}", method: 'delete' %>
+      <%= link_to "Delete", "/submissions/#{sub.id}", method: 'delete' %>
+  </li>
     <ul>
+      <li>submitted by <%= sub.user.username %></li>
       <% number_of_comments = sub.comments.length%>
       <li><%= link_to "#{number_of_comments} " "Comments", comments_url(submission_id: "#{sub.id}")  %></li>
     </ul>

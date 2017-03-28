@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  username: MyString
-  comment: MyText
+  username: Rdore88
+  comment: Best website
   submission_id: 1
 
 two:
-  username: MyString
-  comment: MyText
-  submission_id: 1
+  username: Moose
+  comment: Just ok website
+  submission_id: 2
