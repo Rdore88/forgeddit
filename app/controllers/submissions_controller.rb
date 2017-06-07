@@ -25,7 +25,9 @@ class SubmissionsController < ApplicationController
     redirect_to "/submissions"
   end
 
-  private def submission_params
+  private
+
+  def submission_params
     params.require("submission").permit("title", "link", "pic_url", "user_id")
   end
 end
